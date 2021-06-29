@@ -9,11 +9,79 @@ const Newsletter = require("../models/newsletter");
 
 require("../db/conn");
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   // const con = 'This is the best content on internet so far, so use it wisely';
   // const params = {'title':'PubG is the Best Game','content':con};
-  res.status(200).render("home.pug");
-  console.log(`from router`);
+  var randomnumber = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
+  if(randomnumber == 1) {
+    randomGroup = `A+`
+  }
+  else if (randomnumber == 2) {
+    randomGroup = `A-`    
+  }
+  else if (randomnumber == 3) {
+    randomGroup = `B+`    
+  }
+  else if (randomnumber == 4) {
+    randomGroup = `B-`    
+  }
+  else if (randomnumber == 5) {
+    randomGroup = `AB+`    
+  }
+  else if (randomnumber == 6) {
+    randomGroup = `AB-`    
+  }
+  else if (randomnumber == 7) {
+    randomGroup = `AB-`    
+  }
+  else if (randomnumber == 8) {
+    randomGroup = `O+`    
+  }
+  else {
+    randomGroup = `O-`
+  }
+  console.log(randomnumber);
+  const result = await Register.find({ chooseBloodGroup: randomGroup }).select({
+    firstname: 1,
+    lastname: 1,
+    chooseBloodGroup: 1,
+    _id: 1,
+  });
+  const benificiary = await Register.find({ chooseBloodGroup: `A-` }).select({
+    firstname: 1,
+    lastname: 1,
+    chooseBloodGroup: 1,
+    _id: 1,
+  });
+  res.status(200).render("home.pug", {
+    personid : result[0]._id,
+    nameofperson: result[0].firstname + " " + result[0].lastname,
+    bloodgroupofperson: result[0].chooseBloodGroup,
+    personid2 : result[1]._id,
+    nameofperson2: result[1].firstname + " " + result[1].lastname,
+    bloodgroupofperson2: result[1].chooseBloodGroup,
+    personid3 : result[2]._id,
+    nameofperson3: result[2].firstname + " " + result[2].lastname,
+    bloodgroupofperson3: result[2].chooseBloodGroup,
+    personid4 : result[3]._id,
+    nameofperson4: result[3].firstname + " " + result[3].lastname,
+    bloodgroupofperson4: result[3].chooseBloodGroup,
+    beneficiaryid1 : benificiary[0]._id,
+    benificiaryname1 : benificiary[0].firstname + " " + benificiary[0].lastname,
+    benificiaryblood1: benificiary[0].chooseBloodGroup,
+    beneficiaryid2 : benificiary[1]._id,
+    benificiaryname2 : benificiary[1].firstname + " " + benificiary[1].lastname,
+    benificiaryblood2: benificiary[1].chooseBloodGroup,
+    beneficiaryid3 : benificiary[2]._id,
+    benificiaryname3 : benificiary[2].firstname + " " + benificiary[2].lastname,
+    benificiaryblood3: benificiary[2].chooseBloodGroup,
+    beneficiaryid4 : benificiary[3]._id,
+    benificiaryname4 : benificiary[3].firstname + " " + benificiary[3].lastname,
+    benificiaryblood4: benificiary[3].chooseBloodGroup,
+
+  });
+  // res.status(200).render("home.pug");
+  // console.log(`from router`);
 });
 
 router.get("/home", async (req, res) => {
@@ -50,27 +118,37 @@ router.get("/home", async (req, res) => {
     firstname: 1,
     lastname: 1,
     chooseBloodGroup: 1,
+    _id: 1,
   });
   const benificiary = await Register.find({ chooseBloodGroup: `A-` }).select({
     firstname: 1,
     lastname: 1,
     chooseBloodGroup: 1,
+    _id: 1,
   });
   res.status(200).render("home.pug", {
+    personid : result[0]._id,
     nameofperson: result[0].firstname + " " + result[0].lastname,
     bloodgroupofperson: result[0].chooseBloodGroup,
+    personid2 : result[1]._id,
     nameofperson2: result[1].firstname + " " + result[1].lastname,
     bloodgroupofperson2: result[1].chooseBloodGroup,
+    personid3 : result[2]._id,
     nameofperson3: result[2].firstname + " " + result[2].lastname,
     bloodgroupofperson3: result[2].chooseBloodGroup,
+    personid4 : result[3]._id,
     nameofperson4: result[3].firstname + " " + result[3].lastname,
     bloodgroupofperson4: result[3].chooseBloodGroup,
+    beneficiaryid1 : benificiary[0]._id,
     benificiaryname1 : benificiary[0].firstname + " " + benificiary[0].lastname,
     benificiaryblood1: benificiary[0].chooseBloodGroup,
+    beneficiaryid2 : benificiary[1]._id,
     benificiaryname2 : benificiary[1].firstname + " " + benificiary[1].lastname,
     benificiaryblood2: benificiary[1].chooseBloodGroup,
+    beneficiaryid3 : benificiary[2]._id,
     benificiaryname3 : benificiary[2].firstname + " " + benificiary[2].lastname,
     benificiaryblood3: benificiary[2].chooseBloodGroup,
+    beneficiaryid4 : benificiary[3]._id,
     benificiaryname4 : benificiary[3].firstname + " " + benificiary[3].lastname,
     benificiaryblood4: benificiary[3].chooseBloodGroup,
 
@@ -81,12 +159,69 @@ router.get("/home", async (req, res) => {
   // nameofperson = result[0].firstname;
 });
 
-router.get("/donordetail", (req,res) => {
-  res.status(200).render("donordetails.pug");
+router.get("/donordetail/:id", async (req,res) => {
+  const result = await Register.find({ _id : req.params.id }).select({
+    firstname: 1,
+    lastname: 1,
+    chooseBloodGroup: 1,
+    _id: 1,
+  });
+  res.status(200).render("donordetails.pug", {
+    nameofperson: result[0].firstname + " " + result[0].lastname,
+    bloodgroupofperson: result[0].chooseBloodGroup,
+  });
 })
 
-router.get("/donors", (req, res) => {
-  res.status(200).render("donors.pug");
+router.get("/donors", async (req, res) => {
+  var randomnumber = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
+  if(randomnumber == 1) {
+    randomGroup = `A+`
+  }
+  else if (randomnumber == 2) {
+    randomGroup = `A-`    
+  }
+  else if (randomnumber == 3) {
+    randomGroup = `B+`    
+  }
+  else if (randomnumber == 4) {
+    randomGroup = `B-`    
+  }
+  else if (randomnumber == 5) {
+    randomGroup = `AB+`    
+  }
+  else if (randomnumber == 6) {
+    randomGroup = `AB-`    
+  }
+  else if (randomnumber == 7) {
+    randomGroup = `AB-`    
+  }
+  else if (randomnumber == 8) {
+    randomGroup = `O+`    
+  }
+  else {
+    randomGroup = `O-`
+  }
+  console.log(randomnumber);
+  const result = await Register.find({ chooseBloodGroup: randomGroup }).select({
+    firstname: 1,
+    lastname: 1,
+    chooseBloodGroup: 1,
+    _id: 1,
+  });
+  res.status(200).render("donors.pug", {
+    donorid1: result[0]._id,
+    donorname1: result[0].firstname + " " + result[0].lastname,
+    donorbloodgroup1: result[0].chooseBloodGroup,
+    donorid2: result[1]._id,
+    donorname2: result[1].firstname + " " + result[1].lastname,
+    donorbloodgroup2: result[1].chooseBloodGroup,
+    donorid3: result[2]._id,
+    donorname3: result[2].firstname + " " + result[2].lastname,
+    donorbloodgroup3: result[2].chooseBloodGroup,
+    donorid4: result[3]._id,
+    donorname4: result[3].firstname + " " + result[3].lastname,
+    donorbloodgroup4: result[3].chooseBloodGroup,
+  });
 });
 
 router.get("/blog", (req, res) => {
@@ -109,40 +244,23 @@ router.get("/register", (req, res) => {
   res.status(200).render("registration.pug");
 });
 
-router.get("/searchresult/AO%2B", async (req, res) => {
+router.get("/searchresult/:id", async (req, res) => {
   // res.status(200).render("searchresult.pug");
   // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `A+` }).select({
+  const result = await Register.find({ chooseBloodGroup: req.params.id }).select({
     firstname: 1,
     lastname: 1,
     chooseBloodGroup: 1,
+    _id: 1,
   });
   res.status(200).render("searchresult.pug", {
+    personid: result[0]._id,
     nameofperson: result[0].firstname + " " + result[0].lastname,
     bloodgroupofperson: result[0].chooseBloodGroup,
+    personid2: result[1]._id,
     nameofperson2: result[1].firstname + " " + result[1].lastname,
     bloodgroupofperson2: result[1].chooseBloodGroup,
-    nameofperson3: result[2].firstname + " " + result[2].lastname,
-    bloodgroupofperson3: result[2].chooseBloodGroup,
-  });
-  // console.log(result);
-
-  // console.log(req.query.bloodgroup);
-});
-
-router.get("/searchresult/A-", async (req, res) => {
-  // res.status(200).render("searchresult.pug");
-  // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `A-` }).select({
-    firstname: 1,
-    lastname: 1,
-    chooseBloodGroup: 1,
-  });
-  res.status(200).render("searchresult.pug", {
-    nameofperson: result[0].firstname + " " + result[0].lastname,
-    bloodgroupofperson: result[0].chooseBloodGroup,
-    nameofperson2: result[1].firstname + " " + result[1].lastname,
-    bloodgroupofperson2: result[1].chooseBloodGroup,
+    personid3: result[2]._id,
     nameofperson3: result[2].firstname + " " + result[2].lastname,
     bloodgroupofperson3: result[2].chooseBloodGroup,
   });
@@ -150,126 +268,143 @@ router.get("/searchresult/A-", async (req, res) => {
 
   // console.log(req.query.bloodgroup);
 });
-router.get("/searchresult/BO%2B", async (req, res) => {
-  // res.status(200).render("searchresult.pug");
-  // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `B+` }).select({
-    firstname: 1,
-    lastname: 1,
-    chooseBloodGroup: 1,
-  });
-  res.status(200).render("searchresult.pug", {
-    nameofperson: result[0].firstname + " " + result[0].lastname,
-    bloodgroupofperson: result[0].chooseBloodGroup,
-    nameofperson2: result[1].firstname + " " + result[1].lastname,
-    bloodgroupofperson2: result[1].chooseBloodGroup,
-    nameofperson3: result[2].firstname + " " + result[2].lastname,
-    bloodgroupofperson3: result[2].chooseBloodGroup,
-  });
-  console.log(result);
 
-  // console.log(bloodgroupsearchquery);
-});
-router.get("/searchresult/B-", async (req, res) => {
-  // res.status(200).render("searchresult.pug");
-  // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `B-` }).select({
-    firstname: 1,
-    lastname: 1,
-    chooseBloodGroup: 1,
-  });
-  res.status(200).render("searchresult.pug", {
-    nameofperson: result[0].firstname + " " + result[0].lastname,
-    bloodgroupofperson: result[0].chooseBloodGroup,
-    nameofperson2: result[1].firstname + " " + result[1].lastname,
-    bloodgroupofperson2: result[1].chooseBloodGroup,
-    nameofperson3: result[2].firstname + " " + result[2].lastname,
-    bloodgroupofperson3: result[2].chooseBloodGroup,
-  });
-  console.log(result);
+// router.get("/searchresult/A-", async (req, res) => {
+//   const result = await Register.find({ chooseBloodGroup: `A-` }).select({
+//     firstname: 1,
+//     lastname: 1,
+//     chooseBloodGroup: 1,
+//   });
+//   res.status(200).render("searchresult.pug", {
+//     nameofperson: result[0].firstname + " " + result[0].lastname,
+//     bloodgroupofperson: result[0].chooseBloodGroup,
+//     nameofperson2: result[1].firstname + " " + result[1].lastname,
+//     bloodgroupofperson2: result[1].chooseBloodGroup,
+//     nameofperson3: result[2].firstname + " " + result[2].lastname,
+//     bloodgroupofperson3: result[2].chooseBloodGroup,
+//   });
+//   console.log(result);
+// });
+// router.get("/searchresult/BO%2B", async (req, res) => {
+//   // res.status(200).render("searchresult.pug");
+//   // let bloodgroupsearchquery = req.query.bloodgroup;
+//   const result = await Register.find({ chooseBloodGroup: `B+` }).select({
+//     firstname: 1,
+//     lastname: 1,
+//     chooseBloodGroup: 1,
+//   });
+//   res.status(200).render("searchresult.pug", {
+//     nameofperson: result[0].firstname + " " + result[0].lastname,
+//     bloodgroupofperson: result[0].chooseBloodGroup,
+//     nameofperson2: result[1].firstname + " " + result[1].lastname,
+//     bloodgroupofperson2: result[1].chooseBloodGroup,
+//     nameofperson3: result[2].firstname + " " + result[2].lastname,
+//     bloodgroupofperson3: result[2].chooseBloodGroup,
+//   });
+//   console.log(result);
 
-  // console.log(req.query.bloodgroup);
-});
-router.get("/searchresult/ABO%2B", async (req, res) => {
-  // res.status(200).render("searchresult.pug");
-  // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `AB+` }).select({
-    firstname: 1,
-    lastname: 1,
-    chooseBloodGroup: 1,
-  });
-  res.status(200).render("searchresult.pug", {
-    nameofperson: result[0].firstname + " " + result[0].lastname,
-    bloodgroupofperson: result[0].chooseBloodGroup,
-    nameofperson2: result[1].firstname + " " + result[1].lastname,
-    bloodgroupofperson2: result[1].chooseBloodGroup,
-    nameofperson3: result[2].firstname + " " + result[2].lastname,
-    bloodgroupofperson3: result[2].chooseBloodGroup,
-  });
-  console.log(result);
+//   // console.log(bloodgroupsearchquery);
+// });
+// router.get("/searchresult/B-", async (req, res) => {
+//   // res.status(200).render("searchresult.pug");
+//   // let bloodgroupsearchquery = req.query.bloodgroup;
+//   const result = await Register.find({ chooseBloodGroup: `B-` }).select({
+//     firstname: 1,
+//     lastname: 1,
+//     chooseBloodGroup: 1,
+//   });
+//   res.status(200).render("searchresult.pug", {
+//     nameofperson: result[0].firstname + " " + result[0].lastname,
+//     bloodgroupofperson: result[0].chooseBloodGroup,
+//     nameofperson2: result[1].firstname + " " + result[1].lastname,
+//     bloodgroupofperson2: result[1].chooseBloodGroup,
+//     nameofperson3: result[2].firstname + " " + result[2].lastname,
+//     bloodgroupofperson3: result[2].chooseBloodGroup,
+//   });
+//   console.log(result);
 
-  // console.log(req.query.bloodgroup);
-});
-router.get("/searchresult/AB-", async (req, res) => {
-  // res.status(200).render("searchresult.pug");
-  // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `AB-` }).select({
-    firstname: 1,
-    lastname: 1,
-    chooseBloodGroup: 1,
-  });
-  res.status(200).render("searchresult.pug", {
-    nameofperson: result[0].firstname + " " + result[0].lastname,
-    bloodgroupofperson: result[0].chooseBloodGroup,
-    nameofperson2: result[1].firstname + " " + result[1].lastname,
-    bloodgroupofperson2: result[1].chooseBloodGroup,
-    nameofperson3: result[2].firstname + " " + result[2].lastname,
-    bloodgroupofperson3: result[2].chooseBloodGroup,
-  });
-  console.log(result);
+//   // console.log(req.query.bloodgroup);
+// });
+// router.get("/searchresult/ABO%2B", async (req, res) => {
+//   // res.status(200).render("searchresult.pug");
+//   // let bloodgroupsearchquery = req.query.bloodgroup;
+//   const result = await Register.find({ chooseBloodGroup: `AB+` }).select({
+//     firstname: 1,
+//     lastname: 1,
+//     chooseBloodGroup: 1,
+//   });
+//   res.status(200).render("searchresult.pug", {
+//     nameofperson: result[0].firstname + " " + result[0].lastname,
+//     bloodgroupofperson: result[0].chooseBloodGroup,
+//     nameofperson2: result[1].firstname + " " + result[1].lastname,
+//     bloodgroupofperson2: result[1].chooseBloodGroup,
+//     nameofperson3: result[2].firstname + " " + result[2].lastname,
+//     bloodgroupofperson3: result[2].chooseBloodGroup,
+//   });
+//   console.log(result);
 
-  // console.log(req.query.bloodgroup);
-});
-router.get("/searchresult/OO%2B", async (req, res) => {
-  // res.status(200).render("searchresult.pug");
-  // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `O+` }).select({
-    firstname: 1,
-    lastname: 1,
-    chooseBloodGroup: 1,
-  });
-  res.status(200).render("searchresult.pug", {
-    nameofperson: result[0].firstname + " " + result[0].lastname,
-    bloodgroupofperson: result[0].chooseBloodGroup,
-    nameofperson2: result[1].firstname + " " + result[1].lastname,
-    bloodgroupofperson2: result[1].chooseBloodGroup,
-    nameofperson3: result[2].firstname + " " + result[2].lastname,
-    bloodgroupofperson3: result[2].chooseBloodGroup,
-  });
-  console.log(result);
+//   // console.log(req.query.bloodgroup);
+// });
+// router.get("/searchresult/AB-", async (req, res) => {
+//   // res.status(200).render("searchresult.pug");
+//   // let bloodgroupsearchquery = req.query.bloodgroup;
+//   const result = await Register.find({ chooseBloodGroup: `AB-` }).select({
+//     firstname: 1,
+//     lastname: 1,
+//     chooseBloodGroup: 1,
+//   });
+//   res.status(200).render("searchresult.pug", {
+//     nameofperson: result[0].firstname + " " + result[0].lastname,
+//     bloodgroupofperson: result[0].chooseBloodGroup,
+//     nameofperson2: result[1].firstname + " " + result[1].lastname,
+//     bloodgroupofperson2: result[1].chooseBloodGroup,
+//     nameofperson3: result[2].firstname + " " + result[2].lastname,
+//     bloodgroupofperson3: result[2].chooseBloodGroup,
+//   });
+//   console.log(result);
 
-  // console.log(req.query.bloodgroup);
-});
-router.get("/searchresult/O-", async (req, res) => {
-  // res.status(200).render("searchresult.pug");
-  // let bloodgroupsearchquery = req.query.bloodgroup;
-  const result = await Register.find({ chooseBloodGroup: `O-` }).select({
-    firstname: 1,
-    lastname: 1,
-    chooseBloodGroup: 1,
-  });
-  res.status(200).render("searchresult.pug", {
-    nameofperson: result[0].firstname + " " + result[0].lastname,
-    bloodgroupofperson: result[0].chooseBloodGroup,
-    nameofperson2: result[1].firstname + " " + result[1].lastname,
-    bloodgroupofperson2: result[1].chooseBloodGroup,
-    nameofperson3: result[2].firstname + " " + result[2].lastname,
-    bloodgroupofperson3: result[2].chooseBloodGroup,
-  });
-  // console.log(result);
+//   // console.log(req.query.bloodgroup);
+// });
+// router.get("/searchresult/OO%2B", async (req, res) => {
+//   // res.status(200).render("searchresult.pug");
+//   // let bloodgroupsearchquery = req.query.bloodgroup;
+//   const result = await Register.find({ chooseBloodGroup: `O+` }).select({
+//     firstname: 1,
+//     lastname: 1,
+//     chooseBloodGroup: 1,
+//   });
+//   res.status(200).render("searchresult.pug", {
+//     nameofperson: result[0].firstname + " " + result[0].lastname,
+//     bloodgroupofperson: result[0].chooseBloodGroup,
+//     nameofperson2: result[1].firstname + " " + result[1].lastname,
+//     bloodgroupofperson2: result[1].chooseBloodGroup,
+//     nameofperson3: result[2].firstname + " " + result[2].lastname,
+//     bloodgroupofperson3: result[2].chooseBloodGroup,
+//   });
+//   console.log(result);
 
-  // console.log(req.query.bloodgroup);
-});
+//   // console.log(req.query.bloodgroup);
+// });
+// router.get("/searchresult/O-", async (req, res) => {
+//   // res.status(200).render("searchresult.pug");
+//   // let bloodgroupsearchquery = req.query.bloodgroup;
+//   const result = await Register.find({ chooseBloodGroup: `O-` }).select({
+//     firstname: 1,
+//     lastname: 1,
+//     chooseBloodGroup: 1,
+//   });
+//   res.status(200).render("searchresult.pug", {
+//     nameofperson: result[0].firstname + " " + result[0].lastname,
+//     bloodgroupofperson: result[0].chooseBloodGroup,
+//     nameofperson2: result[1].firstname + " " + result[1].lastname,
+//     bloodgroupofperson2: result[1].chooseBloodGroup,
+//     nameofperson3: result[2].firstname + " " + result[2].lastname,
+//     bloodgroupofperson3: result[2].chooseBloodGroup,
+//   });
+//   // console.log(result);
+
+//   // console.log(req.query.bloodgroup);
+// });
 
 // Post Requests
 
@@ -427,6 +562,7 @@ router.post("/searchresult", async (req, res) => {
     country: 1,
     city: 1,
     state: 1,
+    _id: 1,
   });
   console.log(result.length);
   if (!result.length) {
@@ -437,10 +573,13 @@ router.post("/searchresult", async (req, res) => {
   } else {
     if(result[0].chooseBloodGroup) {
       res.status(200).render("searchresult.pug", {
+        personid: result[0]._id,
         nameofperson: result[0].firstname + " " + result[0].lastname,
         bloodgroupofperson: result[0].chooseBloodGroup,
+        personid2: result[1]._id,
         nameofperson2: result[1].firstname + " " + result[1].lastname,
         bloodgroupofperson2: result[1].chooseBloodGroup,
+        personid3: result[2]._id,
         nameofperson3: result[2].firstname + " " + result[2].lastname,
         bloodgroupofperson3: result[2].chooseBloodGroup,
       });

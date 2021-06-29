@@ -141,25 +141,25 @@ block blood gallery
                 div.blood-grid
                     div.blood-group
                         div.blood-item
-                            a(href="/searchresult/AO%2B") A+     
+                            a(href="/searchresult/A+") A+     
                     div.blood-group
                         div.blood-item
                             a(href="/searchresult/A-") A-     
                     div.blood-group
                         div.blood-item
-                            a(href="/searchresult/BO%2B") B+     
+                            a(href="/searchresult/B+") B+     
                     div.blood-group
                         div.blood-item
                             a(href="/searchresult/B-") B-     
                     div.blood-group
                         div.blood-item
-                            a(href="/searchresult/ABO%2B") AB+     
+                            a(href="/searchresult/AB+") AB+     
                     div.blood-group
                         div.blood-item
                             a(href="/searchresult/AB-") AB-     
                     div.blood-group
                         div.blood-item
-                            a(href="/searchresult/OO%2B", name="opositive") O+     
+                            a(href="/searchresult/O+", name="opositive") O+     
                     div.blood-group
                         div.blood-item
                             a(href="/searchresult/O-") O-     
@@ -179,7 +179,7 @@ block donor list area
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/donors/6.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{nameofperson}]
+                                h2 #[a(href=`/donorDetail/`+personid) #{nameofperson}]
                                 h4 Blood Group:
                                     span #{bloodgroupofperson}
 
@@ -198,13 +198,13 @@ block donor list area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More                 
+                                    a(href=`/donorDetail/`+personid) Read More                 
                     div.donor-item
                         div.donor-list
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/donors/5.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{nameofperson2}]
+                                h2 #[a(href=`/donorDetail/`+personid2) #{nameofperson2}]
                                 h4 Blood Group:
                                     span #{bloodgroupofperson2}
 
@@ -223,13 +223,13 @@ block donor list area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More                 
+                                    a(href=`/donorDetail/`+personid2) Read More                 
                     div.donor-item
                         div.donor-list
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/donors/4.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{nameofperson3}]
+                                h2 #[a(href=`/donorDetail/`+personid3) #{nameofperson3}]
                                 h4 Blood Group:
                                     span #{bloodgroupofperson3}
 
@@ -248,13 +248,13 @@ block donor list area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More                 
+                                    a(href=`/donorDetail/`+personid3) Read More                 
                     div.donor-item
                         div.donor-list
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/donors/3.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{nameofperson4}]
+                                h2 #[a(href=`/donorDetail/`+personid4) #{nameofperson4}]
                                 h4 Blood Group:
                                     span #{bloodgroupofperson4}
 
@@ -273,7 +273,7 @@ block donor list area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More                 
+                                    a(href=`/donorDetail/`+personid4) Read More                 
     <!-- -----Donor List Area End---- -->
 
 block benefeciaries area
@@ -289,7 +289,7 @@ block benefeciaries area
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/agents/12.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{benificiaryname1}]
+                                h2 #[a(href=`/donorDetail/`+beneficiaryid1) #{benificiaryname1}]
                                 h4 Blood Group:
                                     span #{benificiaryblood1}
 
@@ -308,13 +308,13 @@ block benefeciaries area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More                 
+                                    a(href=`/donorDetail/`+beneficiaryid1) Read More                 
                     div.donor-item
                         div.donor-list
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/agents/11.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{benificiaryname2}]
+                                h2 #[a(href=`/donorDetail/`+beneficiaryid2) #{benificiaryname2}]
                                 h4 Blood Group:
                                     span #{benificiaryblood2}
 
@@ -333,13 +333,13 @@ block benefeciaries area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More                 
+                                    a(href=`/donorDetail/`+beneficiaryid2) Read More                 
                     div.donor-item
                         div.donor-list
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/agents/10.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{benificiaryname3}]
+                                h2 #[a(href=`/donorDetail/`+beneficiaryid3) #{benificiaryname3}]
                                 h4 Blood Group:
                                     span #{benificiaryblood3}
 
@@ -358,13 +358,13 @@ block benefeciaries area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More                 
+                                    a(href=`/donorDetail/`+beneficiaryid3) Read More                 
                     div.donor-item
                         div.donor-list
                             div.donor-photo
                                 img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/agents/6.jpg", alt="")
                             div.donor-info
-                                h2 #[a(href="#") #{benificiaryname4}]
+                                h2 #[a(href=`/donorDetail/`+beneficiaryid4) #{benificiaryname4}]
                                 h4 Blood Group:
                                     span #{benificiaryblood4}
 
@@ -383,7 +383,7 @@ block benefeciaries area
                                             a(href="#")
                                                 i.fa.fa-pinterest
                                 div.donor-link
-                                    a(href="#") Read More
+                                    a(href=`/donorDetail/`+beneficiaryid4) Read More
     <!-- -----Beneficiaries(Recipient) Area End-----  -->
 
 block people speak area
