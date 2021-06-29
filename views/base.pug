@@ -1,0 +1,134 @@
+doctype html 
+html
+  head
+    title Blood Management Project
+    block scripts
+    block style 
+    block link
+    block bootstrap
+
+  body
+
+    <!-- Navigation bar start -->
+    div.navbar#navbar
+            div#logo
+                a(href="/home") 
+                    img(src="../static/images/logo/logo.png", alt="Donate The Blood")
+            ul 
+                li 
+                    a(href="/home") 
+                        |Home
+                li 
+                    a(href="/donors")
+                        |Donors 
+                li 
+                    a(href="/login")
+                        |Sign In 
+                li 
+                    a(href="/blog")
+                        |Blog
+                li 
+                    a(href="/contact")
+                        |Contact Us 
+                li 
+                    a(href="/about")
+                        |About Us 
+    <!-- Navigation bar End -->
+
+    block section form area
+
+    block about area
+
+    block blood gallery 
+
+    block donor list area
+
+    block benefeciaries area
+
+    block people speak area
+
+    block latest news area
+
+    block contact area
+
+    block login area
+
+    block registration area
+
+    block searchresult area
+
+    block donor detail area
+
+
+    <!-- -----NewsLetter Area Start----- -->
+        div.newsletter-area
+            div.container
+                div.newsletter
+                    div.newsletter-headline
+                        h2 Newsletter
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ipsum fugit? A doloribus ullam odit atque accusamus excepturi officia doloremque.
+                    div.newsletter-submit
+                        form(action="/home", method="post")
+                            input(type="text", placeholder="Enter Your Email", name="email_subscribe")
+                            input(type="submit", value="Submit", name="form_subscribe") 
+    <!-- -----NewsLetter Area End----- -->
+
+    <!-- -----Footer Area Start----- -->
+        div.footer-area
+            div.container
+                div.footer
+                    div.latest-news.news-2
+                        div.footer-item.footer-service
+                            h2 Latest News
+                            ul.p-0.fmain
+                                li 
+                                    a(href="#") Libero error nihil aliquid.
+                                li 
+                                    a(href="#") Ipsum dolor sit amet elits, odio.
+                                li 
+                                    a(href="#") Amet Cumque eum quia neque amet.     
+                    div.popular-news.news-2
+                        div.footer-item.footer-service
+                            h2 Popular News
+                            ul.p-0.fmain
+                                li 
+                                    a(href="#") Lorem ipsum dolor sit amet.
+                                li 
+                                    a(href="#") Lorem ipsum dolor sit amet.
+                                li 
+                                    a(href="#") Amet Cumque eum quia neque amet.     
+                    div.contact.news-2
+                        div.footer-item.footer-service
+                            h2 Contact
+                            ul.p-0
+                                li 
+                                    |Address: ABESIT, Ghaziabad.
+                                li 
+                                    |Email: info@yourwebsite.com
+                                li 
+                                    |Phone: 123-456-7878
+                                li
+                                    |Fax: 123-456-7880
+                    div.social-media.news-2
+                        div.footer-item.footer-service
+                            h2 Social Media
+                            div.footer-social-link
+                                ul.p-0 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-facebook 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-twitter 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-linkedin 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-google-plus 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-pinterest 
+                div.footer-copyright
+                    p Copyright © 2021. All Rights Reserved.
+        <!-- -----Footer Area End----- -->

@@ -1,0 +1,49 @@
+extends base.pug 
+
+block scripts 
+    script(src="/static/index.js") 
+
+block style 
+    style 
+        include ../static/home.css
+
+block link
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+
+
+block section form area
+    <!-- -----section form area start----- -->
+        section#home.banner
+            div.container
+                div.home-text
+                    h1.h-primary 
+                        |LOGIN   
+    <!-- -----section form area end----- -->    
+
+block login area
+    <!-- -----login area start----- -->
+        div.login-area.bg-area
+            div.container
+                div.login-form
+                    form(action="/login", method="post") 
+                        div.form-row
+                            div.form-group
+                                label(for="Email Address") Email Address
+                                input.form-control(type="email", name="email", placeholder="Email Address", autocomplete="off") 
+                            div.form-group
+                                label(for="Password") Password
+                                input.form-control(type="password", name="password", placeholder="Password", autocomplete="off")
+                            button.button-registration.btn.btn-primary(type="submit", name="form1") Login
+                div.login-here
+                    h3 
+                        i.fa.fa-user-circle-o  New User? 
+                        a(href="/register")  Register Here
+                    h3(style="margin-top:15px;")
+                        i.fa.fa-user-circle-o  Forgot Password? 
+                        a(href="#")  Click Here 
+
+    <!-- -----login area end----- -->
+    
+
+
+

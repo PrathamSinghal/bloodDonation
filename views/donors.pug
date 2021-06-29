@@ -1,0 +1,132 @@
+extends base.pug 
+
+block scripts 
+    script(src="/static/index.js") 
+
+block style 
+    style 
+        include ../static/home.css
+
+block link
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")    
+
+
+block section form area
+    <!-- -----section form area start----- -->
+        section#home.banner
+            div.container
+                div.home-text
+                    h1.h-primary 
+                        |Donors                
+    <!-- -----section form area end----- -->
+
+
+
+
+block donor list area
+    <!-- -----Donor List Area Start---- -->
+        div.donor-list-area
+            div.container
+                div.headline
+                    h2 Recent Donors
+                    div.headline-icon
+                div.donor-gallery
+                    div.donor-item
+                        div.donor-list
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            //- div.donor-photo(style={background: "url('/static/images/donors/donor1.jpg')"})
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            //- div.donor-photo(style={background: "url('/static/images/donors/donor1.jpg')"})
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+    <!-- -----Donor List Area End---- -->

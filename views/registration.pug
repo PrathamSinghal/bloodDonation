@@ -1,0 +1,90 @@
+extends base.pug 
+
+block scripts 
+    script(src="/static/index.js") 
+
+block style 
+    style 
+        include ../static/home.css
+
+block link
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+
+
+block section form area
+    <!-- -----section form area start----- -->
+        section#home.banner
+            div.container
+                div.home-text
+                    h1.h-primary 
+                        |REGISTRATION   
+    <!-- -----section form area end----- -->    
+
+block registration area 
+    <!-- -----registration area start----- -->
+        div.login-area.bg-area
+            div.container
+                div.login-form
+                    form(action="/register", method="post")
+                        div.form-row
+                            div.form-group 
+                                label(for="First Name") First Name * 
+                                input.form-control(type="text", name="firstname", placeholder="First Name")
+                            div.form-group 
+                                label(for="Last Name") Last Name * 
+                                input.form-control(type="text", name="lastname", placeholder="Last Name")
+                            div.form-group 
+                                label(for="Choose Blood Group") Choose Blood Group * 
+                                select.form-control.chosen-select(name="chooseBloodGroup", data-placeholder="Choose Blood Group")
+                                    option(value="", disabled, selected, hidden )  
+                                        |Choose Blood Group
+                                    option(value="A+")  
+                                        |A+
+                                    option(value="A-")  
+                                        |A-
+                                    option(value="B+")  
+                                        |B+
+                                    option(value="B-")  
+                                        |B-
+                                    option(value="AB+")  
+                                        |AB+
+                                    option(value="AB-")  
+                                        |AB-
+                                    option(value="O+")  
+                                        |O+
+                                    option(value="O-")  
+                                        |O-     
+                            div.form-group 
+                                label(for="Email Address") Email Address * 
+                                input.form-control(type="email", name="email", placeholder="Email Address")
+                            div.form-group 
+                                label(for="Phone") Phone *
+                                input.form-control(type="number", name="phone", placeholder="Phone Number") 
+                            div.form-group 
+                                label(for="Address") Address *
+                                input.form-control(type="text", name="address", placeholder="Address")
+                            div.form-group 
+                                label(for="Country") Country *
+                                input.form-control(type="text", name="country", placeholder="Country")
+                            div.form-group 
+                                label(for="State") State *
+                                input.form-control(type="text", name="state", placeholder="State")
+                            div.form-group 
+                                label(for="City") City *
+                                input.form-control(type="text", name="city", placeholder="City")
+                            div.form-group 
+                                label(for="ZipCode") Zip Code *
+                                input.form-control(type="number", name="zipcode", placeholder="Zip Code")
+                            div.form-group 
+                                label(for="Password") Password *
+                                input.form-control(type="password", name="password", placeholder="Password")
+                            div.form-group 
+                                label(for="ConfirmPassword") Confirm Password *
+                                input.form-control(type="password", name="confirmpassword", placeholder="Confirm Password")
+                            button.button-registration.btn.btn-primary(type="submit", name="form1") Sign Up    
+                div.login-here
+                    h3 
+                        i.fa.fa-user-circle-o  Already a Member?
+                        a(href="/login")  Login Here     
+
+    <!-- -----registration area end----- -->

@@ -1,0 +1,499 @@
+doctype html 
+html 
+    head 
+        title Blood Management Project
+        style 
+            include ../static/home.css 
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")    
+
+    body 
+        <!-- navigation bar start -->
+        div.navbar#navbar
+            div#logo
+                img(src="../static/images/logo/logo.png", alt="Donate The Blood")
+            ul 
+                li 
+                    a(href="#") 
+                        |Home
+                li 
+                    a(href="#")
+                        |Donors 
+                li 
+                    a(href="#")
+                        |Sign In 
+                li 
+                    a(href="#")
+                        |Blog
+                li 
+                    a(href="#")
+                        |Contact Us 
+                li 
+                    a(href="#")
+                        |About Us 
+        <!-- navigation bar end  -->
+
+        <!-- -----section form area start----- -->
+        section#home 
+            div.container
+                div.home-text
+                    h1.h-primary 
+                        |Search a Donor in Your Area
+                div.searchbox        
+                    form(action="#", method="post") 
+                        div.search-input.btn
+                            input.form-control(type="text",name="country",placeholder="Country Name")
+                        div.search-input.btn
+                            input.form-control(type="text",name="city",placeholder="City Name")
+                        div.search-input.btn
+                            select.form-control(name="blood-group-id", placeholder="Choose Blood Group")
+                                option(value="")  
+                                    |
+                                option(value="1")  
+                                    |A+
+                                option(value="2")  
+                                    |A
+                                option(value="3")  
+                                    |B+
+                                option(value="4")  
+                                    |B-
+                                option(value="5")  
+                                    |AB+
+                                option(value="6")  
+                                    |AB-
+                                option(value="7")  
+                                    |O+
+                                option(value="8")  
+                                    |O-
+                        div.search-input.btn
+                            input(type="submit", value="Search Donor", name="form_search")
+        <!-- -----section form area end----- -->
+
+        <!-- -----blood gallery start----- -->
+        div.blood-gallery
+            div.container 
+                div.headline
+                    h2 Blood Groups
+                    div.headline-icon    
+
+                div.blood-grid
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") A+     
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") A-     
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") B+     
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") B-     
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") AB+     
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") AB-     
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") O+     
+                    div.blood-group
+                        div.blood-item
+                            a(href="#") O-     
+        <!-- -----blood gallery End----- -->
+
+        <!-- -----Donor List Area Start---- -->
+        div.donor-list-area
+            div.container
+                div.headline
+                    h2 Recent Donors
+                    div.headline-icon
+                div.donor-gallery
+                    div.donor-item
+                        div.donor-list
+                            //- div.donor-photo(style={background: "url('/static/images/donors/donor1.jpg')"})
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            //- div.donor-photo(style={background: "url('/static/images/donors/donor1.jpg')"})
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            //- div.donor-photo(style={background: "url('/static/images/donors/donor1.jpg')"})
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            //- div.donor-photo(style={background: "url('/static/images/donors/donor1.jpg')"})
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+        <!-- -----Donor List Area End---- -->
+
+        <!-- -----Beneficiaries(Recipient) Area Start-----  -->
+        div.donor-list-area.recipient-area
+            div.container
+                div.headline
+                    h2 Recent Beneficiaries
+                    div.headline-icon    
+                div.donor-gallery
+                    div.donor-item
+                        div.donor-list
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More                 
+                    div.donor-item
+                        div.donor-list
+                            div.donor-photo
+                            div.donor-info
+                                h2 #[a(href="#") Pratham Singhal]
+                                h4 Blood Group:
+                                    span A+
+
+                                div.donor-social
+                                    ul 
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-facebook  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-twitter  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-linkedin  
+                                        li 
+                                            a(href="#")
+                                                i.fa.fa-pinterest
+                                div.donor-link
+                                    a(href="#") Read More
+        <!-- -----Beneficiaries(Recipient) Area End-----  -->
+
+        <!-- -----People Speak Section Start----- -->
+        div.speak-section-image
+            div.bg-2
+
+            div.container
+                div.headline.headline-white
+                    h2 Beneficiaries Speak
+                    div.headline-icon    
+
+            div.speak-gallery
+                div.gallery-outer-stage
+                    div.gallery-stage
+                        div.gallery-item
+                            div.testimonial-item
+                                div.testimonial-photo
+                                div.testimonial-text
+                                    h2 Gary Brent
+                                    h3 CFO(XYZ It Solution)
+                                    div.testimonial-para
+                                        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis sint ab quae laudantium amet magnam illum veniam quibusdam commodi expedita, labore, libero voluptas id? Impedit voluptatem esse neque doloribus consectetur?
+                        div.gallery-item
+                            div.testimonial-item
+                                div.testimonial-photo
+                                div.testimonial-text
+                                    h2 Gary Brent
+                                    h3 CFO(XYZ It Solution)
+                                    div.testimonial-para
+                                        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis sint ab quae laudantium amet magnam illum veniam quibusdam commodi expedita, labore, libero voluptas id? Impedit voluptatem esse neque doloribus consectetur?
+                        div.gallery-item
+                            div.testimonial-item
+                                div.testimonial-photo
+                                div.testimonial-text
+                                    h2 Gary Brent
+                                    h3 CFO(XYZ It Solution)
+                                    div.testimonial-para
+                                        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis sint ab quae laudantium amet magnam illum veniam quibusdam commodi expedita, labore, libero voluptas id? Impedit voluptatem esse neque doloribus consectetur?
+                        div.gallery-item
+                            div.testimonial-item
+                                div.testimonial-photo
+                                div.testimonial-text
+                                    h2 Gary Brent
+                                    h3 CFO(XYZ It Solution)
+                                    div.testimonial-para
+                                        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis sint ab quae laudantium amet magnam illum veniam quibusdam commodi expedita, labore, libero voluptas id? Impedit voluptatem esse neque doloribus consectetur?
+                div.gallery-nav.disabled
+                    div.gallery-prev
+                        i.fa.fa-angle-left
+                    div.gallery-next    
+                        i.fa.fa-angle-right
+                div.gallery-dots
+                    div.gallery-dot
+                        span 
+                    div.gallery-dot
+                        span 
+                    div.gallery-dot
+                        span 
+                    div.gallery-dot.active
+                        span 
+        <!-- -----People Speak Section End----- -->
+
+        <!-- -----Latest News Area Start----- -->
+        div.latest-news
+            div.container
+                div.headline
+                    h2 
+                        span Latest 
+                        | News
+                    div.headline-icon
+                div.latest-gallery-news
+                    div.gallery-outer-stage-news
+                        div.gallery-stage-news
+                            div.gallery-item-news
+                                div.latest-item
+                                    div.latest-photo
+                                    div.latest-text
+                                        h2 Lorem ipsum dolor sit amet consr.
+                                        ul 
+                                            li Category:
+                                                a(href="#") Residential
+                                            li Date: 05-04-2019
+                                        div.latest-para
+                                            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius animi fugarepellendus sint dignissimos, perferendis voluptates mollitia debitismolestias, laudantium voluptatum beatae facilis....
+                                            a(href="#") Read More 
+                                div.latest-item
+                                    div.latest-photo
+                                    div.latest-text
+                                        h2 Lorem ipsum dolor sit amet consr.
+                                        ul 
+                                            li Category:
+                                                a(href="#") Residential
+                                            li Date: 05-04-2019
+                                        div.latest-para
+                                            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius animi fugarepellendus sint dignissimos, perferendis voluptates mollitia debitismolestias, laudantium voluptatum beatae facilis....
+                                            a(href="#") Read More 
+                                div.latest-item
+                                    div.latest-photo
+                                    div.latest-text
+                                        h2 Lorem ipsum dolor sit amet consr.
+                                        ul 
+                                            li Category:
+                                                a(href="#") Residential
+                                            li Date: 05-04-2019
+                                        div.latest-para
+                                            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius animi fugarepellendus sint dignissimos, perferendis voluptates mollitia debitismolestias, laudantium voluptatum beatae facilis....
+                                            a(href="#") Read More 
+                    div.gallery-nav
+                    div.gallery-dots                    
+        <!-- -----Latest News Area End----- -->
+
+        <!-- -----NewsLetter Area Start----- -->
+        div.newsletter-area
+            div.container
+                div.newsletter
+                    div.newsletter-headline
+                        h2 Newsletter
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ipsum fugit? A doloribus ullam odit atque accusamus excepturi officia doloremque.
+                    div.newsletter-submit
+                        form(action="#", method="post")
+                            input(type="text", placeholder="Enter Your Email", name="email_subscribe")
+                            input(type="submit", value="Submit", name="form_subscribe") 
+        <!-- -----NewsLetter Area End----- -->
+
+        <!-- -----Footer Area Start----- -->
+        div.footer-area
+            div.container
+                div.footer
+                    div.latest-news.news-2
+                        div.footer-item.footer-service
+                            h2 Latest News
+                            ul.fmain
+                                li 
+                                    a(href="#") Libero error nihil aliquid.
+                                li 
+                                    a(href="#") Ipsum dolor sit amet elits, odio.
+                                li 
+                                    a(href="#") Amet Cumque eum quia neque amet.     
+                    div.popular-news.news-2
+                        div.footer-item.footer-service
+                            h2 Popular News
+                            ul.fmain
+                                li 
+                                    a(href="#") Lorem ipsum dolor sit amet.
+                                li 
+                                    a(href="#") Lorem ipsum dolor sit amet.
+                                li 
+                                    a(href="#") Amet Cumque eum quia neque amet.     
+                    div.contact.news-2
+                        div.footer-item.footer-service
+                            h2 Contact
+                            ul
+                                li 
+                                    |Address: ABESIT, Ghaziabad.
+                                li 
+                                    |Email: info@yourwebsite.com
+                                li 
+                                    |Phone: 123-456-7878
+                                li
+                                    |Fax: 123-456-7880
+                    div.social-media.news-2
+                        div.footer-item.footer-service
+                            h2 Social Media
+                            div.footer-social-link
+                                ul 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-facebook 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-twitter 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-linkedin 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-google-plus 
+                                    li 
+                                        a(href="#")
+                                            i.fa.fa-pinterest 
+                div.footer-copyright
+                    p Copyright © 2021. All Rights Reserved.
+        <!-- -----Footer Area End----- -->
