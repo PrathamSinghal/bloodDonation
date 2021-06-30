@@ -1300,3 +1300,39 @@ margin: 0;
 .donor-description p.description {
     font-size: 14px;
 }
+
+.about-table {
+    /* background-color: #e2eaf1; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.about-table-content1, .about-table-content2 {
+    width: 50%;
+}
+.about-table-content1 ul , .about-table-content2 ul { 
+    padding-top: 1rem;
+    list-style-type: disc;
+    /* font-size: large;
+    font-weight: 600; */
+}
+.about-table-content1 ul li , .about-table-content2 ul li { 
+    list-style: none;
+    padding: 0;
+        margin: 0;    
+        /* font-size: medium;
+    font-weight: 500; */
+    font-family: 'Droid Sans',sans-serif;
+    padding-bottom: 1rem;
+}
+
+.about-table-content1 ul li h4 , .about-table-content2 ul li h4 {
+    color: #A94442;
+    position: relative;
+    font-family: Montserrat,sans-serif;
+    font-weight: 400;
+    margin: 0;
+    background: 0 0;
+    line-height: 1.4em;   
+}

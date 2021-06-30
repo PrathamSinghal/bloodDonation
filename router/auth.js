@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
+const session = require('express-session');
+const flash = require('connect-flash');
+const alert = require('alert');
+// const popup = require('popups');
+
 // Models
 const Register = require("../models/registers");
 const Contact = require("../models/contactUs");
@@ -225,10 +230,21 @@ router.get("/donors", async (req, res) => {
 });
 
 router.get("/blog", (req, res) => {
+  // req.flash('message', 'Success!!');
+  // res.redirect('/contact');
+  // popup.alert({
+  //   content: 'Hello!'
+  // });
+  // popup.window({
+  //   mode: 'alert',
+  //   content: 'Hey'
+  // });
+  // alert("message");
   res.status(200).render("blog.pug");
 });
 
 router.get("/contact", (req, res) => {
+  // res.send(req.flash('message'));
   res.status(200).render("contact.pug");
 });
 
@@ -503,6 +519,7 @@ router.post("/login", (req, res) => {
     // console.log(Register.findOne({email:email, password:password}));
     
     if (userExist) {
+      // return req.alert('hi');
       return res.status(200).json({ success: "login successfully" });
     } else {
       // console.log('user not exist');

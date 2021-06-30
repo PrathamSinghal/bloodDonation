@@ -22,6 +22,11 @@ block section form area
 
 block registration area 
     <!-- -----registration area start----- -->
+        
+        div.alert(class="alert-#{message.type}", style="text-align: center")
+            button(type="button", name="close", data-dismiss="alert") &times; 
+            strong #{message} #{message} hi
+
         div.login-area.bg-area
             div.container
                 div.login-form

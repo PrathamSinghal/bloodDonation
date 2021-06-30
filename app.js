@@ -5,6 +5,8 @@ const { urlencoded } = require("body-parser");
 const path = require("path");
 const express = require("express");
 const app = express();
+const session = require('express-session');
+const flash = require('connect-flash');
 
 dotenv.config({ path: "./config.env" });
 
@@ -22,6 +24,13 @@ const Newsletter = require("./models/newsletter");
 // Express Specific Stuff
 app.use("/static", express.static("static")); // for serving static files
 app.use(express.urlencoded());
+app.use(session({
+  secret:'geeksforgeeks',
+  saveUninitialized: true,
+  resave: true
+}));
+app.use(flash());
+
 
 // Pug Specific Stuff
 app.set("view engine", "pug");
