@@ -1,0 +1,178 @@
+extends base.pug 
+
+block scripts 
+    script(src="/static/index.js") 
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM",  crossorigin="anonymous" )
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ,integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p", crossorigin="anonymous")
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ,integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF", crossorigin="anonymous")
+
+
+block style 
+    style 
+        include ../static/home.css
+
+block link
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")    
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC", crossorigin="anonymous")
+
+block dashboard area
+    <!-- -----Dashboard Area Start---- -->
+        div.dashboard-area.bg-area
+            div.container
+                div.row.w-100
+                    div.col-md-3.col-sm-12
+                        div.option-board
+                            ul 
+                                li 
+                                    a(href="#")
+                                        span 
+                                            i.fa.fa-arrow-circle-o-right 
+                                            |Dashboard 
+                                li 
+                                    a(href="/adddetails")
+                                        span 
+                                            i.fa.fa-arrow-circle-o-right 
+                                            |Add Your Details
+                                li 
+                                    a(href="#")
+                                        span 
+                                            i.fa.fa-arrow-circle-o-right 
+                                            |View Donors
+                                li 
+                                    a(href="#")
+                                        span 
+                                            i.fa.fa-arrow-circle-o-right 
+                                            |Update Profile Info
+                                li 
+                                    a(href="#")
+                                        span 
+                                            i.fa.fa-arrow-circle-o-right 
+                                            |Update Profile Photo
+                                li 
+                                    a(href="/home")
+                                        span 
+                                            i.fa.fa-arrow-circle-o-right 
+                                            |Logout
+                    div.col-md-9.col-sm-12
+                        div.detail-dashboard
+                            h1 Add Your Details
+                            div(style="margin-bottom:20px;") * = Required Fields
+                            div.add-car-area
+                                div.row.w-100
+                                    div.information-form
+                                        form(action=`/adddetails/`+userid, method="post")
+                                            div.form-row
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Name *
+                                                        input.form-control.w-100(type="text", name="firstname", autocomplete="off", value=nameofperson) 
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Profession *
+                                                        input.form-control.w-100(type="text", name="profession_details", autocomplete="off", value=profession_details) 
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Education *
+                                                        input.form-control.w-100(type="text", name="education_details", autocomplete="off", value=education_details) 
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Gender *
+                                                        select.form-control.w-100.chosen-select(name="gender_details", data-placeholder="Choose a gender", value=gender_details)
+                                                            option(value="", disabled, selected, hidden )  
+                                                                |Choose a Gender
+                                                            option(value="Male")  
+                                                                |Male
+                                                            option(value="female")  
+                                                                |Female
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Date of Birth *
+                                                        input.form-control.w-100.datepicker.hasDatepicker(type="text", name="date_of_birth_details", autocomplete="off", value="90-01-01", id="dp1625082914393")
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Religion *
+                                                        select.form-control.w-100.chosen-select(name="religion_id_details", data-placeholder="Choose a religion", value=religion_id_details)
+                                                            option(value="", disabled, selected, hidden )  
+                                                                |Choose a Religion
+                                                            option(value="No Religion")  
+                                                                |No Religion
+                                                            option(value="Islam")  
+                                                                |Islam
+                                                            option(value="Hinduism")  
+                                                                |Hinduism
+                                                            option(value="Christian")  
+                                                                |Christian
+                                                            option(value="Other")  
+                                                                |Other 
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Blood Group *
+                                                        select.form-control.w-100.chosen-select(name="chooseBloodGroup", data-placeholder="Choose Blood Group", value=bloodgroupofperson)
+                                                            option(value="", disabled, selected, hidden )  
+                                                                |Choose Blood Group
+                                                            option(value="A+")  
+                                                                |A+
+                                                            option(value="A-")  
+                                                                |A-
+                                                            option(value="B+")  
+                                                                |B+
+                                                            option(value="B-")  
+                                                                |B-
+                                                            option(value="AB+")  
+                                                                |AB+
+                                                            option(value="AB-")  
+                                                                |AB-
+                                                            option(value="O+")  
+                                                                |O+
+                                                            option(value="O-")  
+                                                                |O-  
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Phone *
+                                                        input.form-control.w-100(type="number", name="phone", autocomplete="off", value=phone)    
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Address *
+                                                        input.form-control.w-100(type="text", name="address", autocomplete="off", value=address)    
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Country *
+                                                        input.form-control.w-100(type="text", name="country", autocomplete="off", value=country)    
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") State *
+                                                        input.form-control.w-100(type="text", name="state", autocomplete="off", value=state)    
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") City *
+                                                        input.form-control.w-100(type="text", name="city", autocomplete="off", value=city)    
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Zip Code *
+                                                        input.form-control.w-100(type="text", name="zipcode", autocomplete="off", value=zipcode)    
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Age *
+                                                        input.form-control.w-100(type="number", name="age", autocomplete="off", value=age)    
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Map *
+                                                        textarea.form-control.w-200(name="map_details", cols="30", rows="10", placeholder="Map(iframe code)", style="height: 150px;", value=map_details) 
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Facebook *
+                                                        input.form-control.w-100(type="text", name="facebook_details", autocomplete="off", value=facebook_details)    
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Twitter *
+                                                        input.form-control.w-100(type="text", name="twitter_details", autocomplete="off", value=twitter_details)    
+                                                div.for-flex
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Linkedin *
+                                                        input.form-control.w-100(type="text", name="linkedin_details", autocomplete="off", value=linkedin_details)    
+                                                    div.form-group.col-md-6.col-sm-6
+                                                        label(for="#") Pinterest *
+                                                        input.form-control.w-100(type="text", name="pinterest_details", autocomplete="off", value=pinterest_details)    
+                                            div.for-flex
+                                                div.form-group.col-md-12
+                                                        label(for="#") Photo *
+                                                        input.form-control.w-50-file(type="file", name="photo_details", value=photo_details)
+                                            div.for-flex
+                                                div.form-group.col-md-12
+                                                        label(for="#") Description *
+                                                        textarea.form-control.w-100(name="description_details", cols="30", rows="10", value=description_details)
+                                                        button.btn.btn-primary(type="submit", name="form_details") Submit  
+
+    <!-- -----Dashboard Area End---- -->

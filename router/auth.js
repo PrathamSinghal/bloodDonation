@@ -6,6 +6,9 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const alert = require('alert');
 // const popup = require('popups');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
 
 // Models
 const Register = require("../models/registers");
@@ -166,15 +169,59 @@ router.get("/home", async (req, res) => {
 
 router.get("/donordetail/:id", async (req,res) => {
   const result = await Register.find({ _id : req.params.id }).select({
+    _id: 1,
     firstname: 1,
     lastname: 1,
     chooseBloodGroup: 1,
-    _id: 1,
+    phone: 1,
+    address: 1,
+    country: 1,
+    state: 1,
+    city: 1,
+    zipcode: 1,
+    age: 1,
+    email: 1,
+    profession_details: 1,
+    education_details: 1,
+    gender_details: 1,
+    date_of_birth_details: 1,
+    religion_id_details: 1,
+    map_details: 1,
+    facebook_details: 1,
+    twitter_details: 1,
+    linkedin_details: 1,
+    pinterest_details: 1,
+    photo_details: 1,
+    description_details: 1,
   });
+  console.log(result);
   res.status(200).render("donordetails.pug", {
     nameofperson: result[0].firstname + " " + result[0].lastname,
     bloodgroupofperson: result[0].chooseBloodGroup,
-  });
+    phone: result[0].phone,
+    address: result[0].address,
+    country: result[0].country,
+    state: result[0].state,
+    city: result[0].city,
+    zipcode: result[0].zipcode,
+    age: result[0].age,
+    email: result[0].email,
+    pinterest_details: result[0].pinterest_details,
+    date_of_birth_details: result[0].date_of_birth_details,
+    description_details: result[0].description_details,
+    education_details: result[0].education_details,
+    facebook_details: result[0].facebook_details,
+    gender_details: result[0].gender_details,
+    linkedin_details: result[0].linkedin_details,
+    map_details: result[0].map_details,
+    photo_details: result[0].photo_details,
+    profession_details: result[0].profession_details,
+    religion_id_details: result[0].religion_id_details,
+    twitter_details: result[0].twitter_details,
+
+  }
+  );
+  // console.log(map_details.src);
 })
 
 router.get("/donors", async (req, res) => {
@@ -230,6 +277,8 @@ router.get("/donors", async (req, res) => {
 });
 
 router.get("/blog", (req, res) => {
+  // const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
+  // console.log(dom.window.document); // "Hello world"
   // req.flash('message', 'Success!!');
   // res.redirect('/contact');
   // popup.alert({
@@ -240,6 +289,8 @@ router.get("/blog", (req, res) => {
   //   content: 'Hey'
   // });
   // alert("message");
+  // console.log(global);
+  // alert('hi');
   res.status(200).render("blog.pug");
 });
 
@@ -284,6 +335,77 @@ router.get("/searchresult/:id", async (req, res) => {
 
   // console.log(req.query.bloodgroup);
 });
+
+router.get("/dashboard/:id", async (req, res) => {
+  const user = await Register.find({ _id: req.params.id }).select({
+    firstname: 1,
+    lastname: 1,
+    chooseBloodGroup: 1,
+    _id: 1,
+  });
+  console.log(user);
+  res.status(200).render("dashboard.pug", {
+    userid : user[0]._id,
+    nameofperson: user[0].firstname + " " + user[0].lastname,
+  });
+});
+
+router.get("/adddetails/:id", async (req, res) => {
+  const user = await Register.find({ _id: req.params.id }).select({
+    _id: 1,
+    firstname: 1,
+    lastname: 1,
+    chooseBloodGroup: 1,
+    phone: 1,
+    address: 1,
+    country: 1,
+    state: 1,
+    city: 1,
+    zipcode: 1,
+    age: 1,
+    email: 1,
+    profession_details: 1,
+    education_details: 1,
+    gender_details: 1,
+    date_of_birth_details: 1,
+    religion_id_details: 1,
+    map_details: 1,
+    facebook_details: 1,
+    twitter_details: 1,
+    linkedin_details: 1,
+    pinterest_details: 1,
+    photo_details: 1,
+    description_details: 1,
+  });
+  console.log(user);
+  res.status(200).render("adddetails.pug", {
+    userid : user[0]._id,
+    nameofperson: user[0].firstname + " " + user[0].lastname,
+    bloodgroupofperson: user[0].chooseBloodGroup,
+    phone: user[0].phone,
+    address: user[0].address,
+    country: user[0].country,
+    state: user[0].state,
+    city: user[0].city,
+    zipcode: user[0].zipcode,
+    age: user[0].age,
+    email: user[0].email,
+    profession_details: user[0].profession_details,
+    education_details: user[0].education_details,
+    gender_details: user[0].gender_details,
+    date_of_birth_details: user[0].date_of_birth_details,
+    religion_id_details: user[0].religion_id_details,
+    map_details: user[0].map_details,
+    facebook_details: user[0].facebook_details,
+    twitter_details: user[0].twitter_details,
+    linkedin_details: user[0].linkedin_details,
+    pinterest_details: user[0].pinterest_details,
+    photo_details: user[0].photo_details,
+    description_details: user[0].description_details,
+  });
+  // res.status(200).render("adddetails.pug");
+});
+
 
 // router.get("/searchresult/A-", async (req, res) => {
 //   const result = await Register.find({ chooseBloodGroup: `A-` }).select({
@@ -488,7 +610,8 @@ router.post("/register", (req, res) => {
           myData
             .save()
             .then(() => {
-              res.status(201).send("User Registered Successfully");
+              alert("User Registered Successfully");
+              res.status(201).redirect('/login');
             })
             .catch((err) => {
               res.status(400).send("Item has not been saved to the database.");
@@ -503,24 +626,42 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   // console.log(req.body);
   // res.redirect('/login');
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(422).json({ error: "Please fill the Data properly" });
   }
+
+
+  const user = await Register.find({
+    $and: [
+      { email: email },
+      { password: password },
+    ]
+  }).select({
+    // firstname: 1,
+    // lastname: 1,
+    // chooseBloodGroup: 1,
+    // country: 1,
+    // city: 1,
+    // state: 1,
+    _id: 1,
+  });
+  // console.log(user);
   
   const useLogin = Register.findOne({ email: email, password: password })
   .then((userExist) => {
     // const isMatch = bcrypt.compare(password, useLogin.password);
     // console.log(email);
     // console.log(password);
-    // console.log(Register.findOne({email:email, password:password}));
-    
+    // const userid = Register.findOne({email:email, password:password}).select({email: 1, password: 1, _id: 1,});
+    // console.log(user[0]._id);
     if (userExist) {
       // return req.alert('hi');
-      return res.status(200).json({ success: "login successfully" });
+      alert('Login Successfully');
+      return res.status(200).redirect(`/dashboard/`+user[0]._id);
     } else {
       // console.log('user not exist');
       return res.status(200).json({ error: "user not exist" });
@@ -530,7 +671,6 @@ router.post("/login", (req, res) => {
     console.log(err);
     });
     // console.log(useLogin);
-
   // const isMatch = bcrypt.compare(password, password)
 });
 
@@ -633,6 +773,88 @@ router.post("/home", (req, res) => {
     .catch(() => {
       res.status(400).send("Item has not been saved to the database.");
     });
+});
+
+router.post("/adddetails/:id", async (req, res) => {
+  // const userpost = await Register.find({ chooseBloodGroup: req.params.id }).select({
+  //   firstname: 1,
+  //   lastname: 1,
+  //   chooseBloodGroup: 1,
+  //   _id: 1,
+  // });
+  // console.log(userpost);
+  const {
+    firstname,
+    chooseBloodGroup,
+    phone,
+    address,
+    country,
+    state,
+    city,
+    zipcode,
+    age,
+    profession_details,
+    education_details,
+    gender_details,
+    date_of_birth_details,
+    religion_id_details,
+    map_details,
+    facebook_details,
+    twitter_details,
+    linkedin_details,
+    pinterest_details,
+    photo_details,
+    description_details,
+  } = req.body;
+  console.log(req.body);
+  const _id = req.params.id;
+  // console.log(_id);
+  let updateProfile = await Register.updateOne({_id},{
+    $set : {
+      firstname : firstname,
+      chooseBloodGroup : chooseBloodGroup,
+      phone : phone,
+      address : address,
+      country : country,
+      state : state,
+      city : city,
+      zipcode : zipcode,
+      age: age,
+      profession_details : profession_details,
+      education_details : education_details,
+      gender_details : gender_details,
+      date_of_birth_details : date_of_birth_details,
+      religion_id_details : religion_id_details,
+      map_details : map_details,
+      facebook_details : facebook_details,
+      twitter_details : twitter_details,
+      linkedin_details : linkedin_details,
+      pinterest_details : pinterest_details,
+      photo_details : photo_details,
+      description_details : description_details,
+    }
+  }).then(() => {
+    alert("Profile Updated Successfully");
+    res.status(201).redirect(`/dashboard/`+_id);
+  })
+  .catch((err) => {
+    res.status(400).send("There is an issue while updating the profile.");
+  });;
+  // const updateUser = async (_id) => {
+  //   console.log(_id);
+  //   try {
+  //     console.log(_id);
+  //     const result = await Register.updateOne({_id},{
+  //       $set : {
+  //         lastname : "lastupdatetest"
+  //       }
+  //     });
+      console.log(updateProfile);
+  //   } catch {
+  //     console.log(err);
+  //   }
+  // }
+  // updateUser();
 });
 
 module.exports = router;

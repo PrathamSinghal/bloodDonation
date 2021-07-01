@@ -51,7 +51,46 @@ const registrationSchema = new mongoose.Schema({
     confirmpassword: {
         type: String,
         required: true
-    }
+    },
+    profession_details: {
+        type: String,
+    },
+    education_details: {
+        type: String,
+    },
+    gender_details: {
+        type: String,
+    },
+    date_of_birth_details: {
+        type: String,
+    },
+    religion_id_details: {
+        type: String,
+    },
+    map_details: {
+        type: String,
+    },
+    facebook_details: {
+        type: String,
+    },
+    twitter_details: {
+        type: String,
+    },
+    linkedin_details: {
+        type: String,
+    },
+    pinterest_details: {
+        type: String,
+    },
+    photo_details: {
+        type: String,
+    },
+    description_details: {
+        type: String,
+    },
+    age: {
+        type: Number,
+    },
 });
 
 // We are hashing the passwords

@@ -42,16 +42,16 @@ block donor detail area
                                 div.donor-leftbar-social
                                      ul 
                                         li 
-                                            a(href="#")
+                                            a(href=``+facebook_details)
                                                 i.fa.fa-facebook  
                                         li 
-                                            a(href="#")
+                                            a(href=``+twitter_details)
                                                 i.fa.fa-twitter  
                                         li 
-                                            a(href="#")
+                                            a(href=``+linkedin_details)
                                                 i.fa.fa-linkedin  
                                         li 
-                                            a(href="#")
+                                            a(href=``+pinterest_details)
                                                 i.fa.fa-pinterest 
                             div.donor-contact-form
                                 h3 Message to Donor
@@ -79,53 +79,50 @@ block donor detail area
                                         tr 
                                             td 
                                                 span Profession:
-                                            td Researcher    
+                                            td #{profession_details} 
                                         tr 
                                             td Education:
-                                            td Masters in Chemistry
+                                            td #{education_details}
                                         tr 
                                             td Gender:
-                                            td Male
+                                            td #{gender_details}
                                         tr 
                                             td Date of Birth:
-                                            td 1990-01-01
+                                            td #{date_of_birth_details}
                                         tr 
                                             td Age:
-                                            td 31
+                                            td #{age}
                                         tr 
                                             td Religion:
-                                            td Christian
+                                            td #{religion_id_details}
                                         tr 
                                             td Email:	
-                                            td JamesBDay@jourrapide.com
+                                            td #{email}
                                         tr 
                                             td Phone:
-                                            td 361-673-0025
-                                        tr 
-                                            td Website:
-                                            td ---
+                                            td #{phone}
                                         tr 
                                             td Address:	
-                                            td 4833 White Avenue,
+                                            td #{address}
                                         tr 
                                             td Country:
-                                            td USA
+                                            td #{country}
                                         tr 
                                             td State:
-                                            td TX
+                                            td #{state}
                                         tr 
                                             td City:
-                                            td Corpus Christi
+                                            td #{city}
                                         tr 
                                             td Zip Code:
-                                            td 78401
+                                            td #{zipcode}
                                         tr 
                                             td Map:	
                                             td 
-                                                iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.367061859243!2d-80.85350288512898!3d35.19732488031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88569fa1d407d78f%3A0x84d8e8232faad74b!2sBlood+Donation!5e0!3m2!1sen!2sbd!4v1514178603845", frameborder="0", width="600", height="450", style="border:0", allowfullscreen) 
+                                                iframe(src=``+map_details, frameborder="0", width="600", height="450", style="border:0", allowfullscreen) 
                                 h3  Description
                                 p.description 
-                                    |Ex vix alienum sadipscing, quod melius philosophia id has. Ad qui quem reprimique, quo possit detracto reprimique no, sint reque officiis ei per. Ea regione commune volutpat pro, fabulas facilis omnesque mei ne. Cu unum detracto comprehensam sea, ad vim ancillae principes, ex usu fugit consulatu. Vis te purto equidem voluptatum.
+                                    |#{description_details}    
                                     br
                                     br
                                     |Detracto contentiones te est, brute ipsum consul an vis. Mea ei regione blandit ullamcorper, definiebas constituam vix ei. At his ludus nonumes gloriatur. Ne vim tamquam nonumes.
@@ -133,27 +130,27 @@ block donor detail area
                                     br
                                     |Duo purto pertinax in. Ea noluisse mediocrem qui, nobis melius vis et. Iudico delicatissimi no qui, quando fastidii nam et, ne eum rationibus deseruisse neglegentur. Ei eum populo viderer reprimique, tantas homero abhorreant usu ei, at postulant gloriatur vituperata sit.
 
-                                h3 Agent Details (Who Added This Donor)
-                                table.table.table-bordered 
-                                    tbody 
-                                        tr 
-                                            td Agent Name: 
-                                            td Thomas W. Spencer
-                                        tr 
-                                            td Agent Name: 
-                                            td Thomas W. Spencer
-                                        tr 
-                                            td Agent Name: 
-                                            td Thomas W. Spencer
-                                        tr 
-                                            td Agent Name: 
-                                            td Thomas W. Spencer
-                                        tr 
-                                            td Agent Name: 
-                                            td Thomas W. Spencer
-                                        tr 
-                                            td Agent Name: 
-                                            td Thomas W. Spencer
+                                //- h3 Agent Details (Who Added This Donor)
+                                //- table.table.table-bordered 
+                                //-     tbody 
+                                //-         tr 
+                                //-             td Agent Name: 
+                                //-             td Thomas W. Spencer
+                                //-         tr 
+                                //-             td Agent Name: 
+                                //-             td Thomas W. Spencer
+                                //-         tr 
+                                //-             td Agent Name: 
+                                //-             td Thomas W. Spencer
+                                //-         tr 
+                                //-             td Agent Name: 
+                                //-             td Thomas W. Spencer
+                                //-         tr 
+                                //-             td Agent Name: 
+                                //-             td Thomas W. Spencer
+                                //-         tr 
+                                //-             td Agent Name: 
+                                //-             td Thomas W. Spencer
 
         //- div.donor-list-area
             //- div.container
