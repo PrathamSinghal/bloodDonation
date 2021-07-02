@@ -573,13 +573,17 @@ router.post("/register", (req, res) => {
       !state,
     !city || !zipcode || !password || !confirmpassword)
   ) {
-    return res.status(422).json({ error: "Please fill the fields properly" });
+    alert("Please fill the fields properly");
+    return res.status(422).redirect('/register');
+    // return res.status(422).json({ error: "Please fill the fields properly" });
   }
 
   Register.findOne({ email: email })
     .then((userExist) => {
       if (userExist) {
-        return res.status(422).json({ error: "email already exist" });
+        alert("email already exist");
+        return res.status(422).redirect('/register');
+        // return res.status(422).json({ error: "email already exist" });
       } else {
         // const password = req.body.password;
         // const confirmpassword = req.body.confirmpassword;
@@ -607,6 +611,7 @@ router.post("/register", (req, res) => {
             confirmpassword: confirmpassword
           });
 
+          console.log(myData);
           myData
             .save()
             .then(() => {
@@ -614,10 +619,14 @@ router.post("/register", (req, res) => {
               res.status(201).redirect('/login');
             })
             .catch((err) => {
-              res.status(400).send("Item has not been saved to the database.");
+              alert("Item has not been saved to the database.");
+              res.status(400).redirect('/register');
+              // res.status(400).send("Item has not been saved to the database.");
             });
         } else {
-          res.status(400).send("Password does not match.");
+          alert("Password does not match.");
+          res.status(400).redirect('/register');
+          // res.status(400).send("Password does not match.");
         }
       }
     })
@@ -631,7 +640,9 @@ router.post("/login", async (req, res) => {
   // res.redirect('/login');
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(422).json({ error: "Please fill the Data properly" });
+    alert('Please fill the Data properly');
+    return res.status(422).redirect(`/login`);
+    // return res.status(422).json({ error: "Please fill the Data properly" });
   }
 
 
@@ -664,7 +675,9 @@ router.post("/login", async (req, res) => {
       return res.status(200).redirect(`/dashboard/`+user[0]._id);
     } else {
       // console.log('user not exist');
-      return res.status(200).json({ error: "user not exist" });
+      alert("user not exist");
+      return res.status(422).redirect(`/login`);
+      // return res.status(200).json({ error: "user not exist" });
     }
   })
   .catch((err) => {
@@ -684,7 +697,9 @@ router.post("/searchresult", async (req, res) => {
   console.log(req.body);
   
   if(!state || !city || !bloodgroup) {
-    return res.status(422).json({ error: "Please fill the Data properly" });
+    alert("Please fill the Data properly");
+    return res.status(422).redirect(`/home`);
+    // return res.status(422).json({ error: "Please fill the Data properly" });
   }
   
   
@@ -723,25 +738,69 @@ router.post("/searchresult", async (req, res) => {
   });
   console.log(result.length);
   if (!result.length) {
-    console.log('Empty Data');
-    res.status(400).json({error: 'Blood Group not available.'});
+    // console.log('Empty Data');
+    alert('Blood Group not available.');
+    res.status(422).redirect(`/home`);
+    // res.status(400).json({error: 'Blood Group not available.'});
     // res.setTimeout(res.redirect('/home'),2000);
     
   } else {
     if(result[0].chooseBloodGroup) {
-      res.status(200).render("searchresult.pug", {
-        personid: result[0]._id,
-        nameofperson: result[0].firstname + " " + result[0].lastname,
-        bloodgroupofperson: result[0].chooseBloodGroup,
-        personid2: result[1]._id,
-        nameofperson2: result[1].firstname + " " + result[1].lastname,
-        bloodgroupofperson2: result[1].chooseBloodGroup,
-        personid3: result[2]._id,
-        nameofperson3: result[2].firstname + " " + result[2].lastname,
-        bloodgroupofperson3: result[2].chooseBloodGroup,
-      });
+      if (result.length == 1) {
+        res.status(200).render("searchresult.pug", {
+          personid: result[0]._id,
+          nameofperson: result[0].firstname + " " + result[0].lastname,
+          bloodgroupofperson: result[0].chooseBloodGroup,
+          displaynone: `display: none;`,
+          // personid2: result[1]._id,
+          // nameofperson2: result[1].firstname + " " + result[1].lastname,
+          // bloodgroupofperson2: result[1].chooseBloodGroup,
+          // personid3: result[2]._id,
+          // nameofperson3: result[2].firstname + " " + result[2].lastname,
+          // bloodgroupofperson3: result[2].chooseBloodGroup,
+        });
+      } else if (result.length == 2) {
+        res.status(200).render("searchresult.pug", {
+          personid: result[0]._id,
+          nameofperson: result[0].firstname + " " + result[0].lastname,
+          bloodgroupofperson: result[0].chooseBloodGroup,
+          personid2: result[1]._id,
+          nameofperson2: result[1].firstname + " " + result[1].lastname,
+          bloodgroupofperson2: result[1].chooseBloodGroup,
+          displaynone1: `display: none;`,
+          // personid3: result[2]._id,
+          // nameofperson3: result[2].firstname + " " + result[2].lastname,
+          // bloodgroupofperson3: result[2].chooseBloodGroup,
+        });
+      } else if (result.length == 3) {
+        res.status(200).render("searchresult.pug", {
+          personid: result[0]._id,
+          nameofperson: result[0].firstname + " " + result[0].lastname,
+          bloodgroupofperson: result[0].chooseBloodGroup,
+          personid2: result[1]._id,
+          nameofperson2: result[1].firstname + " " + result[1].lastname,
+          bloodgroupofperson2: result[1].chooseBloodGroup,
+          personid3: result[2]._id,
+          nameofperson3: result[2].firstname + " " + result[2].lastname,
+          bloodgroupofperson3: result[2].chooseBloodGroup,
+        });
+      } else {
+        res.status(200).render("searchresult.pug", {
+          personid: result[0]._id,
+          nameofperson: result[0].firstname + " " + result[0].lastname,
+          bloodgroupofperson: result[0].chooseBloodGroup,
+          // personid2: result[1]._id,
+          // nameofperson2: result[1].firstname + " " + result[1].lastname,
+          // bloodgroupofperson2: result[1].chooseBloodGroup,
+          // personid3: result[2]._id,
+          // nameofperson3: result[2].firstname + " " + result[2].lastname,
+          // bloodgroupofperson3: result[2].chooseBloodGroup,
+        });
+      }
     } else{
-      res.status(400).json({error: 'Blood Group not available.'})
+      alert('Blood Group not available.');
+      res.status(422).redirect(`/home`);
+      // res.status(400).json({error: 'Blood Group not available.'})
     }
   }
   // console.log(result);
@@ -756,10 +815,14 @@ router.post("/contact", (req, res) => {
   myData
     .save()
     .then(() => {
-      res.send("This item has been saved to the database.");
+      alert('This item has been saved to the database.');
+      res.status(200).redirect(`/home`);
+      // res.send("This item has been saved to the database.");
     })
     .catch(() => {
-      res.status(400).send("Item has not been saved to the database.");
+      alert('This item has been saved to the database.');
+      res.status(400).redirect(`/home`);
+      // res.status(400).send("Item has not been saved to the database.");
     });
 });
 
@@ -768,10 +831,14 @@ router.post("/home", (req, res) => {
   myData
     .save()
     .then(() => {
-      res.send("This item has been saved to the database.");
+      alert('This item has been saved to the database.');
+      res.status(400).redirect(`/home`);
+      // res.send("This item has been saved to the database.");
     })
     .catch(() => {
-      res.status(400).send("Item has not been saved to the database.");
+      alert('This item has not been saved to the database.');
+      res.status(400).redirect(`/home`);
+      // res.status(400).send("Item has not been saved to the database.");
     });
 });
 

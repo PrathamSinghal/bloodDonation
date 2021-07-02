@@ -55,7 +55,7 @@ block searchresult area
                                                     i.fa.fa-pinterest
                                     div.donor-link
                                         a(href=`/donorDetail/`+personid) Read More           
-                        div.donor-item
+                        div.donor-item(style=displaynone)
                             div.donor-list
                                 div.donor-photo
                                     img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/donors/2.jpg", alt="")
@@ -80,31 +80,32 @@ block searchresult area
                                                     i.fa.fa-pinterest
                                     div.donor-link
                                         a(href=`/donorDetail/`+personid2) Read More           
-                        div.donor-item
-                            div.donor-list
-                                div.donor-photo
-                                    img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/donors/4.jpg", alt="")
-                                div.donor-info
-                                    h2 #[a(href=`/donorDetail/`+personid3) #{nameofperson3}]
-                                    h4 Blood Group:
-                                        span #{bloodgroupofperson3}
+                        div(style=displaynone1)
+                            div.donor-item(style=displaynone+displaynone1)
+                                div.donor-list
+                                    div.donor-photo
+                                        img.w-100.h-100(src="https://phpscriptpoint.com/cc/bloodbank/assets/uploads/donors/4.jpg", alt="")
+                                    div.donor-info
+                                        h2 #[a(href=`/donorDetail/`+personid3) #{nameofperson3}]
+                                        h4 Blood Group:
+                                            span #{bloodgroupofperson3}
 
-                                    div.donor-social
-                                        ul 
-                                            li 
-                                                a(href="#")
-                                                    i.fa.fa-facebook  
-                                            li 
-                                                a(href="#")
-                                                    i.fa.fa-twitter  
-                                            li 
-                                                a(href="#")
-                                                    i.fa.fa-linkedin  
-                                            li 
-                                                a(href="#")
-                                                    i.fa.fa-pinterest
-                                    div.donor-link
-                                        a(href=`/donorDetail/`+personid3) Read More           
+                                        div.donor-social
+                                            ul 
+                                                li 
+                                                    a(href="#")
+                                                        i.fa.fa-facebook  
+                                                li 
+                                                    a(href="#")
+                                                        i.fa.fa-twitter  
+                                                li 
+                                                    a(href="#")
+                                                        i.fa.fa-linkedin  
+                                                li 
+                                                    a(href="#")
+                                                        i.fa.fa-pinterest
+                                        div.donor-link
+                                            a(href=`/donorDetail/`+personid3) Read More           
 
 
 
