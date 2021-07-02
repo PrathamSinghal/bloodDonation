@@ -878,7 +878,7 @@ router.post("/adddetails/:id", async (req, res) => {
   // console.log(_id);
   let updateProfile = await Register.updateOne({_id},{
     $set : {
-      firstname : firstname,
+      // firstname : firstname,
       chooseBloodGroup : chooseBloodGroup,
       phone : phone,
       address : address,
