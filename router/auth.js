@@ -14,6 +14,7 @@ const { JSDOM } = jsdom;
 const Register = require("../models/registers");
 const Contact = require("../models/contactUs");
 const Newsletter = require("../models/newsletter");
+const { urlencoded } = require("express");
 
 require("../db/conn");
 
@@ -737,6 +738,7 @@ router.post("/searchresult", async (req, res) => {
     _id: 1,
   });
   console.log(result.length);
+  console.log(result);
   if (!result.length) {
     // console.log('Empty Data');
     alert('Blood Group not available.');
@@ -789,12 +791,12 @@ router.post("/searchresult", async (req, res) => {
           personid: result[0]._id,
           nameofperson: result[0].firstname + " " + result[0].lastname,
           bloodgroupofperson: result[0].chooseBloodGroup,
-          // personid2: result[1]._id,
-          // nameofperson2: result[1].firstname + " " + result[1].lastname,
-          // bloodgroupofperson2: result[1].chooseBloodGroup,
-          // personid3: result[2]._id,
-          // nameofperson3: result[2].firstname + " " + result[2].lastname,
-          // bloodgroupofperson3: result[2].chooseBloodGroup,
+          personid2: result[1]._id,
+          nameofperson2: result[1].firstname + " " + result[1].lastname,
+          bloodgroupofperson2: result[1].chooseBloodGroup,
+          personid3: result[2]._id,
+          nameofperson3: result[2].firstname + " " + result[2].lastname,
+          bloodgroupofperson3: result[2].chooseBloodGroup,
         });
       }
     } else{
@@ -820,7 +822,7 @@ router.post("/contact", (req, res) => {
       // res.send("This item has been saved to the database.");
     })
     .catch(() => {
-      alert('This item has been saved to the database.');
+      alert('This item has not been saved to the database.');
       res.status(400).redirect(`/home`);
       // res.status(400).send("Item has not been saved to the database.");
     });
